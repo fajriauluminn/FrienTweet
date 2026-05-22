@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FrienTweet</title>
+</head>
+<body class="min-h-screen text-white bg-gradient-to-r from-[#0a061d] via-[#1a1a4d] to-[#2d2db3]">
+
+    <!-- Navigation Area -->
+    <nav class="px-8 md:px-16 py-8">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-4xl font-bold tracking-tight">
+                <span class="bg-gradient-to-r from-[#9d7dfa] to-[#b3fffc] bg-clip-text text-transparent">
+                FrienTweet
+            </span>
+        </div>
+        
+        <!-- Menu Links -->
+        <ul class="hidden md:flex space-x-10 text-lg font-medium">
+            <li class="relative">
+                <a href="#" class="hover:text-gray-300">Home</a>
+                <!-- Active Indicator Line -->
+                <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></div>
+            </li>
+            <li><a href="tweet.html" class="hover:text-gray-300">Tweet</a></li>
+            <li><a href="#" class="hover:text-gray-300">Method</a></li>
+            <li><a href="#" class="hover:text-gray-300">Analysis</a></li>
+            <li><a href="#" class="hover:text-gray-300">About Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-8 md:px-16 mt-16 md:mt-24 flex flex-col md:row items-center justify-center gap-12 md:gap-20">
+        <div class="flex flex-col md:flex-row items-center w-full max-w-6xl">
+            
+            <!-- Illustration Column -->
+             <div class="w-full md:w-1/2 flex justify-center mb-10 md:mb-0">
+                <div class="relative group">
+                    <!-- Elemen glow ungu sudah dihapus dari sini -->
+                    <img src="Screenshot__620_-removebg-preview.png" class="w-full max-w-xs rounded-lg">
+                </div>
+            </div>
+
+            <!-- Content Column -->
+            <div class="w-full md:w-1/2">
+                <p class="text-xl md:text-2xl leading-relaxed text-justify font-light">
+                    <span class="font-bold">FrienTweet</span> merupakan website yang dirancang untuk 
+                    mendeteksi potensi <span class="italic">cyberbullying</span> pada teks yang diinput oleh pengguna. 
+                    Sistem ini menggunakan model <span class="italic">deep learning</span> dengan penerapan 
+                    kombinasi model IndoBERTweet dan Bi-GRU untuk menganalisis serta 
+                    mengklasifikasikan teks menjadi kategori tertentu.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
