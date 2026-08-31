@@ -26,10 +26,10 @@
                 <!-- Active Indicator Line -->
                 <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></div>
             </li>
-            <li><a href="tweet.html" class="hover:text-gray-300">Tweet</a></li>
-            <li><a href="#" class="hover:text-gray-300">Method</a></li>
-            <li><a href="#" class="hover:text-gray-300">Analysis</a></li>
-            <li><a href="#" class="hover:text-gray-300">About Us</a></li>
+            <li><a href="{{ url_for('tweet') }}" class="hover:text-gray-300">Tweet</a></li>
+            <li><a href="{{ url_for('method') }}" class="hover:text-gray-300">Method</a></li>
+            <li><a href="{{ url_for('analysis') }}" class="hover:text-gray-300">Analysis</a></li>
+            <li><a href="{{ url_for('about') }}" class="hover:text-gray-300">About Us</a></li>
         </ul>
     </nav>
 
@@ -40,8 +40,7 @@
             <!-- Illustration Column -->
              <div class="w-full md:w-1/2 flex justify-center mb-10 md:mb-0">
                 <div class="relative group">
-                    <!-- Elemen glow ungu sudah dihapus dari sini -->
-                    <img src="Screenshot__620_-removebg-preview.png" class="w-full max-w-xs rounded-lg">
+                    <img src="{{ url_for('static', filename='images/Screenshot__620_-removebg-preview.png') }}" class="w-full max-w-xs rounded-lg">
                 </div>
             </div>
 

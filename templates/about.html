@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FrienTweet - About Us</title>
+</head>
+
+<body class="min-h-screen text-white bg-gradient-to-r from-[#0a061d] via-[#1a1a4d] to-[#2d2db3]">
+
+    <!-- Navigation -->
+    <nav class="px-8 md:px-16 py-8">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+            <div class="text-4xl font-bold tracking-tight">
+                <span class="bg-gradient-to-r from-[#9d7dfa] to-[#b3fffc] bg-clip-text text-transparent">
+                    FrienTweet
+                </span>
+            </div>
+
+            <ul class="hidden md:flex space-x-10 text-lg font-medium">
+                <li><a href="{{ url_for('index') }}" class="hover:text-gray-300">Home</a></li>
+                <li><a href="{{ url_for('tweet') }}" class="hover:text-gray-300">Tweet</a></li>
+                <li><a href="{{ url_for('method') }}" class="hover:text-gray-300">Method</a></li>
+                <li><a href="{{ url_for('analysis') }}" class="hover:text-gray-300">Analysis</a></li>
+                <li class="relative">
+                    <a href="{{ url_for('about') }}" class="hover:text-gray-300">About Us</a>
+                    <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></div>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-8 pb-20">
+
+        <div class="bg-white/10 backdrop-blur rounded-3xl p-10">
+
+            <div class="flex flex-col items-center">
+                <img src="{{ url_for('static', filename='images/PROFILE PIC SQUARE.JPG') }}"
+                     alt="Profile"
+                     class="w-40 h-40 rounded-full object-cover border-4 border-white/30 shadow-lg">
+
+                <h1 class="text-4xl font-bold mt-6">Fajria Ulumin Nafiah</h1>
+
+                <p class="text-lg text-gray-300 mt-2">
+                    Data Science Student
+                </p>
+
+                <p class="text-gray-400">
+                    UPN "Veteran" Jawa Timur
+                </p>
+            </div>
+
+            <section class="mt-12">
+                <h2 class="text-2xl font-bold mb-4">About Me</h2>
+
+                <p class="text-gray-200 leading-8 text-justify">
+                    Mahasiswa Program Studi Sains Data Universitas
+                    Pembangunan Nasional "Veteran" Jawa Timur yang memiliki
+                    ketertarikan pada bidang Data Analysis, Machine Learning, Deep Learning,
+                    dan Natural Language Processing (NLP).
+                </p>
+            </section>
+
+            <section class="mt-12">
+                <h2 class="text-2xl font-bold mb-5">Skills</h2>
+
+                <div class="flex flex-wrap gap-3">
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">Python</span>
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">PyTorch</span>
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">Machine Learning</span>
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">Deep Learning</span>
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">NLP</span>
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">Flask</span>
+                    <span class="bg-violet-600/70 px-4 py-2 rounded-full">SQLite</span>
+                </div>
+            </section>
+
+            <section class="mt-12">
+                <h2 class="text-2xl font-bold mb-5">About This Project</h2>
+
+                <div class="bg-white/10 rounded-2xl p-6">
+                    <h3 class="text-xl font-semibold">FrienTweet</h3>
+
+                    <p class="text-gray-300 mt-2">
+                        FrienTweet dikembangkan sebagai implementasi penelitian tugas akhir mengenai deteksi cyberbullying pada media sosial X menggunakan model hybrid IndoBERTweet dan Bi-GRU. Website ini dikembangkan menggunakan Flask, SQLite, dan Tailwind CSS.
+                    </p>
+                </div>
+            </section>
+
+            <footer class="text-center text-gray-400 mt-16">
+                Developed by <b>Fajria Nafiah</b> © 2026
+            </footer>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

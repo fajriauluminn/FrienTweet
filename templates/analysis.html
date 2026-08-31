@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>FrienTweet - Analysis</title></head>
+<body class="min-h-screen text-white bg-gradient-to-r from-[#0a061d] via-[#1a1a4d] to-[#2d2db3]">
+<nav class="px-8 md:px-16 py-8">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<div class="text-4xl font-bold tracking-tight"><span class="bg-gradient-to-r from-[#9d7dfa] to-[#b3fffc] bg-clip-text text-transparent">FrienTweet</span></div>
+<ul class="hidden md:flex space-x-10 text-lg font-medium">
+<li><a href="{{ url_for('index') }}" class="hover:text-gray-300">Home</a></li>
+<li><a href="{{ url_for('tweet') }}" class="hover:text-gray-300">Tweet</a></li>
+<li><a href="{{ url_for('method') }}" class="hover:text-gray-300">Method</a></li>
+<li class="relative"><a href="{{ url_for('analysis') }}">Analysis</a><div class="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></div></li>
+<li><a href="{{ url_for('about') }}" class="hover:text-gray-300">About Us</a></li>
+</ul></div></nav>
+
+<main class="max-w-6xl mx-auto px-8 pb-16">
+<h1 class="text-5xl font-bold text-center">Model Analysis</h1>
+<p class="text-center text-gray-200 mt-4 mb-12">Evaluasi performa model IndoBERTweet-Bi-GRU.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-14">
+<div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center"><p>Accuracy</p><h2 class="text-4xl font-bold mt-2">93%</h2></div>
+<div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center"><p>Precision</p><h2 class="text-4xl font-bold mt-2">85%</h2></div>
+<div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center"><p>Recall</p><h2 class="text-4xl font-bold mt-2">88%</h2></div>
+<div class="bg-white/10 backdrop-blur rounded-2xl p-6 text-center"><p>F1-Score</p><h2 class="text-4xl font-bold mt-2">87%</h2></div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-10 items-center">
+<div class="bg-white/10 backdrop-blur rounded-2xl p-8 flex justify-center">
+<div class="w-80 h-80 relative">
+<canvas id="donut"></canvas>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<div class="text-4xl font-bold">16,574</div>
+<div class="text-gray-300">Tweets</div>
+</div>
+</div>
+</div>
+
+<div class="space-y-4">
+<h2 class="text-2xl font-bold mb-2">Distribusi Label</h2>
+<div class="bg-white/10 rounded-xl p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <span class="w-4 h-4 rounded-full" style="background:#F74343;"></span>
+        <span>Kata Kasar & Vulgar</span>
+    </div>
+    <span><b>11,769</b> (70.2%)</span>
+</div>
+
+<div class="bg-white/10 rounded-xl p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <span class="w-4 h-4 rounded-full" style="background:#C94FB2;"></span>
+        <span>Sexual Harassment</span>
+    </div>
+    <span><b>1,203</b> (7.2%)</span>
+</div>
+
+<div class="bg-white/10 rounded-xl p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <span class="w-4 h-4 rounded-full" style="background:#4595D1;"></span>
+        <span>Non-Cyberbullying</span>
+    </div>
+    <span><b>2,146</b> (12.8%)</span>
+</div>
+
+<div class="bg-white/10 rounded-xl p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <span class="w-4 h-4 rounded-full" style="background:#F58731;"></span>
+        <span>Body Shaming</span>
+    </div>
+    <span><b>699</b> (4.2%)</span>
+</div>
+
+<div class="bg-white/10 rounded-xl p-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+        <span class="w-4 h-4 rounded-full" style="background:#571F1F;"></span>
+        <span>Hate Speech</span>
+    </div>
+    <span><b>937</b> (5.6%)</span>
+</div>
+</div>
+</div>
+
+<section class="mt-16 max-w-2xl mx-auto bg-white/10 backdrop-blur rounded-2xl p-8">
+    <h2 class="text-3xl font-bold text-center mb-6">Confusion Matrix</h2>
+
+    <div class="bg-white rounded-2xl p-4">
+        <img
+            src="{{ url_for('static', filename='images/confusion.jpg') }}"
+            alt="Confusion Matrix"
+            class="w-full rounded-xl"
+        >
+    </div>
+</section>
+
+<script>
+new Chart(document.getElementById('donut'),{
+type:'doughnut',
+data:{
+labels:['Kata Kasar & Vulgar','Sexual Harassment','Non-Cyberbullying','Body Shaming', 'Hate Speech'],
+datasets:[{
+data:[11769,1023,2146,699,937],
+backgroundColor:['#F74343','#C94FB2','#4595D1','#F58731','#571F1F'],
+borderWidth:0,
+hoverOffset:10
+}]
+},
+options:{
+cutout:'68%',
+plugins:{legend:{display:false}}
+}
+});
+</script>
+</body></html>

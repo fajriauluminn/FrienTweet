@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>FrienTweet - Tweet</title>
+</head>
+<body class="bg-[#0f172a] text-white overflow-hidden">
+
+    <div class="flex h-screen">
+        
+        <!-- Left Sidebar -->
+        <aside class="w-80 border-r border-gray-700 flex flex-col items-center py-8">
+            <div class="mb-auto">
+                <!-- Logo -->
+                 <div class="text-4xl font-bold tracking-tight">
+                    <span class="bg-gradient-to-r from-[#9d7dfa] to-[#b3fffc] bg-clip-text text-transparent">
+                        FrienTweet
+                    </span>
+                </div>
+            </div>
+
+            <!-- Tweet Icon -->
+            <div class="mb-10">
+                <div onclick="openModal()"
+                class="w-16 h-16 cursor-pointer rounded-full bg-gradient-to-tr from-blue-600 to-purple-500 flex items-center justify-center shadow-lg">
+                    <img src="{{ url_for('static', filename='images/pngtree-white-feather-pen-icon-png-image_4614130-removebg-preview.png') }}" class="w-full max-w-xs rounded-lg">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Konten Utama (Kanan) -->
+        <main class="flex-1 flex flex-col">
+            
+            <!-- Navbar Header -->
+            <!-- Navbar Header (Ganti bagian <nav> di tweet.html dengan ini) -->
+            <nav class="px-8 md:px-16 py-8">
+                <div class="max-w-6xl mx-auto flex items-center justify-between">
+                    <!-- Logo -->
+                    <div class="text-4xl font-bold tracking-tight">
+                        <span class="bg-gradient-to-r from-[#9d7dfa] to-[#b3fffc] bg-clip-text text-transparent">
+                            
+                        </span>
+                    </div>
+                    <!-- Menu -->
+                    <ul class="hidden md:flex space-x-10 text-lg font-medium text-white">
+                        <li>
+                            <a href="{{ url_for('index') }}" class="hover:text-gray-300">Home</a>
+                        </li>
+                
+                        <li class="relative">
+                            <a href="{{ url_for('tweet') }}" class="hover:text-gray-300">Tweet</a>
+                            <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></div>
+                        </li>
+                
+                        <li><a href="{{ url_for('method') }}" class="hover:text-gray-300">Method</a></li>
+                        <li><a href="{{ url_for('analysis') }}" class="hover:text-gray-300">Analysis</a></li>
+                        <li><a href="{{ url_for('about') }}" class="hover:text-gray-300">About Us</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Bagian Baris (Bisa diisi form input nanti) -->
+            <div id="tweetContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Modal -->
+<div id="tweetModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-[#1e293b] p-6 rounded-2xl w-[500px] shadow-lg">
+    
+    <h2 class="text-xl mb-4">Tweet</h2>
+
+    <input id="username" type="text" placeholder="Username"
+      class="w-full mb-3 p-2 rounded bg-[#0f172a] border border-gray-600 text-white">
+
+    <textarea id="tweet" placeholder="What's happening?"
+      class="w-full p-2 h-32 rounded bg-[#0f172a] border border-gray-600 text-white"></textarea>
+
+    <div class="flex justify-end mt-4 gap-2">
+      <button onclick="closeModal()" class="px-4 py-2 bg-gray-600 rounded">Cancel</button>
+      <button onclick="handleSend()" class="px-4 py-2 bg-gradient-to-r from-purple-500 to-cyan-400 rounded">
+        Send
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function openModal() {
+  const modal = document.getElementById("tweetModal");
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
+
+function closeModal() {
+  const modal = document.getElementById("tweetModal");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+}
+
+
+async function handleSend() {
+  const username = document.getElementById("username").value;
+  const tweet = document.getElementById("tweet").value;
+
+  if (!username || !tweet) {
+    alert("Please fill your tweet column");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://127.0.0.1:5000/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ text: tweet })
+    });
+
+    const data = await res.json();
+    
+    if (data.label !== "Non-Cyberbullying") {
+      alert(`Your tweet contains cyberbullying with ${data.label} category. Please fix your words!`);
+    
+    } else {
+      await fetch("http://127.0.0.1:5000/tweet", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: username,
+          text: tweet,
+          date: new Date().toISOString()
+        })
+      });
+
+      const container = document.getElementById("tweetContainer");
+      container.innerHTML = "";
+
+      await loadTweets();
+
+      closeModal();
+      clearForm();
+    }
+
+  } catch (err) {
+    alert("Server error");
+    console.error(err);
+  }
+}
+
+function clearForm() {
+  document.getElementById("username").value = "";
+  document.getElementById("tweet").value = "";
+}
+
+function addTweetToUI(username, text) {
+  const container = document.getElementById("tweetContainer");
+
+  const div = document.createElement("div");
+  div.className = "bg-[#1e293b] p-4 rounded-xl";
+
+  const date = new Date().toLocaleString();
+
+  div.innerHTML = `
+    <p class="text-cyan-300 font-semibold">@${username}</p>
+    <p class="text-white mt-1">${text}</p>
+    <p class="text-gray-400 text-sm mt-2">${date}</p>
+  `;
+
+  container.prepend(div); 
+}
+
+async function loadTweets() {
+  const res = await fetch("http://127.0.0.1:5000/tweets");
+  const data = await res.json();
+
+  const container = document.getElementById("tweetContainer");
+
+  data.slice(0, 20).forEach(tweet => {
+    const div = document.createElement("div");
+    div.className = "bg-[#1e293b] p-4 rounded-xl";
+
+    div.innerHTML = `
+      <p class="text-cyan-300 font-semibold">@${tweet.username}</p>
+      <p class="text-white mt-1">${tweet.text}</p>
+      <p class="text-gray-400 text-sm mt-2">${tweet.date}</p>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+loadTweets();
+
+</script>
+
+</body>
+</html>

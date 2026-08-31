@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<title>FrienTweet - Method</title>
+</head>
+<body class="min-h-screen text-white bg-gradient-to-r from-[#0a061d] via-[#1a1a4d] to-[#2d2db3]">
+
+<nav class="px-8 md:px-16 py-8">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <div class="text-4xl font-bold tracking-tight">
+      <span class="bg-gradient-to-r from-[#9d7dfa] to-[#b3fffc] bg-clip-text text-transparent">
+        FrienTweet
+      </span>
+    </div>
+
+    <ul class="hidden md:flex space-x-10 text-lg font-medium">
+      <li><a href="{{ url_for('index') }}" class="hover:text-gray-300">Home</a></li>
+      <li><a href="{{ url_for('tweet') }}" class="hover:text-gray-300">Tweet</a></li>
+      <li class="relative">
+        <a href="{{ url_for('method') }}" class="hover:text-gray-300">Method</a>
+        <div class="absolute -bottom-1 left-0 w-full h-0.5 bg-white"></div>
+      </li>
+      <li><a href="{{ url_for('analysis') }}" class="hover:text-gray-300">Analysis</a></li>
+      <li><a href="{{ url_for('about') }}" class="hover:text-gray-300">About Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto px-8 md:px-16 pb-20">
+  <section class="text-center mb-16">
+    <h1 class="text-5xl font-bold mb-5">How Does FrienTweet Work?</h1>
+    <p class="text-xl text-gray-200 max-w-3xl mx-auto">
+      FrienTweet bekerja dengan <i>hybrid model</i> yang terdiri dari kombinasi IndoBERTweet dan Bi-GRU
+      untuk mendeteksi potensi <i>cyberbullying</i> pada teks media sosial.
+    </p>
+  </section>
+
+  <section class="mb-20">
+    <div class="max-w-md mx-auto space-y-4">
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-5 text-center">📝 Input Text</div>
+      <div class="text-center text-2xl">↓</div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-5 text-center">🔤 Tokenization</div>
+      <div class="text-center text-2xl">↓</div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-5 text-center">🤖 IndoBERTweet</div>
+      <div class="text-center text-2xl">↓</div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-5 text-center">🧠 Bi-GRU</div>
+      <div class="text-center text-2xl">↓</div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-5 text-center">📊 Dense Layer</div>
+      <div class="text-center text-2xl">↓</div>
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-5 text-center">📈 Prediction</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-3xl font-bold text-center mb-10">Tahapan Proses</h2>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 hover:bg-white/15 transition">
+        <h3 class="text-2xl font-semibold mb-3">📝 Input Text</h3>
+        <p>Pengguna memasukkan teks atau tweet yang akan dianalisis oleh sistem.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 hover:bg-white/15 transition">
+        <h3 class="text-2xl font-semibold mb-3">🔤 Tokenization</h3>
+        <p>Teks dipecah menjadi token dan dipersiapkan sebagai masukan untuk model IndoBERTweet.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 hover:bg-white/15 transition">
+        <h3 class="text-2xl font-semibold mb-3">🤖 IndoBERTweet</h3>
+        <p>IndoBERTweet menghasilkan representasi kontekstual sehingga makna setiap kata dipahami sesuai konteks kalimat.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 hover:bg-white/15 transition">
+        <h3 class="text-2xl font-semibold mb-3">🧠 Bi-GRU</h3>
+        <p>Bi-GRU mempelajari hubungan antar kata dari arah depan dan belakang untuk memperoleh konteks yang lebih lengkap.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 hover:bg-white/15 transition">
+        <h3 class="text-2xl font-semibold mb-3">📊 Dense Layer</h3>
+        <p>Representasi fitur dipetakan ke masing-masing kategori menggunakan lapisan Dense.</p>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur rounded-2xl p-6 hover:bg-white/15 transition">
+        <h3 class="text-2xl font-semibold mb-3">📈 Prediction</h3>
+        <p>Sistem menghasilkan kategori prediksi cyberbullying berdasarkan probabilitas tertinggi.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
