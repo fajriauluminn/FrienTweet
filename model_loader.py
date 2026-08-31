@@ -78,7 +78,7 @@ class IndoBERTweetBiGRU(nn.Module):
 #path
 BASE_DIR = Path(__file__).resolve().parent
 
-MODEL_PATH = BASE_DIR / "models" / "model_fl_e3_2e5.pth"
+MODEL_PATH = BASE_DIR / "models" / "model_indobertweetbigru.pth"
 LABEL_ENCODER_PATH = BASE_DIR / "models" / "label_encoder.pkl"
 
 # tokenizer
