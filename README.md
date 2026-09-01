@@ -59,5 +59,5 @@ Open the local URL shown in the terminal in your browser.
 This application is based on an undergraduate thesis project focusing on Indonesian cyberbullying detection using a hybrid IndoBERTweet-BiGRU model.
 
 The research repository contains the machine learning pipeline, including data preparation, preprocessing, labeling, training, and evaluation. You can read more about it [here](https://github.com/fajriauluminn/IndoCyberbullyingDetection)!
-
+The trained model is hosted on Hugging Face and can be accessed [here](https://huggingface.co/fajriauluminn/indotweetcyberbullying)
 
