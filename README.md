@@ -19,7 +19,7 @@ The application allows users to enter a text and receive a predicted cyberbullyi
 
 
 ## Demo
-![FrienTweet Demo](assets/Video Project.gif)
+![FrienTweet Demo](assets/demo.gif)
 
 
 ## Installation
