@@ -60,5 +60,5 @@ This application is based on an undergraduate thesis project focusing on Indones
 
 The research repository contains the machine learning pipeline, including data preparation, preprocessing, labeling, training, and evaluation. You can read more about it [here](https://github.com/fajriauluminn/IndoCyberbullyingDetection)!
 
-The trained model is also hosted on Hugging Face and can be accessed [here](https://huggingface.co/fajriauluminn/indotweetcyberbullying)
+The trained model is also hosted on Hugging Face and can be accessed [here🤗](https://huggingface.co/fajriauluminn/indotweetcyberbullying)
 
