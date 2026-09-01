@@ -35,6 +35,6 @@ Install my-project with npm
 
 This application is based on an undergraduate thesis project focusing on Indonesian cyberbullying detection using a hybrid IndoBERTweet-BiGRU model.
 
-The research repository contains the machine learning pipeline, including data preparation, preprocessing, labeling, training, and evaluation. You can read more about it [here](https://github.com/matiassingers/awesome-readme)!
+The research repository contains the machine learning pipeline, including data preparation, preprocessing, labeling, training, and evaluation. You can read more about it [here](https://github.com/fajriauluminn/IndoCyberbullyingDetection)!
 
 
